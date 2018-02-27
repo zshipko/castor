@@ -4,6 +4,9 @@ version = "0.1.0"
 authors = ["Zach Shipko <zachshipko@gmail.com>"]
 license = "ISC"
 keywords = ["content addressable storage", "database", "lmdb"]
+documentation = "https://docs.rs/castor"
+repository = "https://github.com/zshipko/castor"
+description = "Content addressable storage backed by LMDB"
 
 [dependencies]
 kv = { git = "https://github.com/zshipko/rust-kv" }
