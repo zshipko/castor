@@ -1,3 +1,4 @@
 # castor
 
-A content addressable storage engine based on [LMDB](https://github.com/LMDB/lmdb)
+An embedded content addressable store for Rust based on [kv](https://github.com/zshipko/rust-kv)
+
