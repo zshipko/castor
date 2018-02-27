@@ -1,0 +1,8 @@
+[package]
+name = "castor"
+version = "0.1.0"
+authors = ["Zach Shipko <zachshipko@gmail.com>"]
+
+[dependencies]
+kv = { git = "https://github.com/zshipko/rust-kv" }
+sha2 = "0.7"
