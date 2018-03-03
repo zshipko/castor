@@ -9,5 +9,5 @@ repository = "https://github.com/zshipko/castor"
 description = "Content addressable storage backed by LMDB"
 
 [dependencies]
-kv = "0.2"
+kv = "0.3"
 sha2 = "0.7"
