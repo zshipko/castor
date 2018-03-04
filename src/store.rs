@@ -3,9 +3,10 @@ use std::path::Path;
 use kv;
 
 use txn::Txn;
+use token::Token;
 
 /// A Store holds content adressable values
-pub struct Store(kv::Store);
+pub struct Store(kv::Store<Token>);
 
 impl Store {
     /// Create a new configuration builder
@@ -19,12 +20,12 @@ impl Store {
     }
 
     /// Open a readonly transaction
-    pub fn read_txn(&self) -> Result<Txn, kv::Error> {
+    pub fn read_txn<'a, V: kv::Value<'a>>(&'a self) -> Result<Txn<'a, V>, kv::Error> {
         Ok(Txn(self.0.read_txn()?))
     }
 
     /// Open a writable transaction
-    pub fn write_txn(&mut self) -> Result<Txn, kv::Error> {
+    pub fn write_txn<'a, V: kv::Value<'a>>(&'a mut self) -> Result<Txn<'a, V>, kv::Error> {
         Ok(Txn(self.0.write_txn()?))
     }
 }

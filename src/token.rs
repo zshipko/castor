@@ -1,10 +1,11 @@
 use sha2;
 use sha2::Digest;
-use kv::{Key, Value};
+use kv::Value;
 
 use std::str;
 
 /// A Token is a unique identifier for a stored value
+#[derive(Clone)]
 pub struct Token(String);
 
 impl Token {
@@ -29,6 +30,7 @@ impl Token {
     }
 }
 
+
 impl AsRef<[u8]> for Token {
     fn as_ref(&self) -> &[u8] {
         self.0.as_ref()
@@ -42,12 +44,4 @@ impl <'a> From<&'a [u8]> for Token {
             Token(String::from(str::from_utf8_unchecked(x)))
         }
     }
-}
-
-impl Key for Token {
-
-}
-
-impl <'a> Key for &'a Token {
-
 }
