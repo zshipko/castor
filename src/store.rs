@@ -3,10 +3,9 @@ use std::path::Path;
 use kv;
 
 use txn::Txn;
-use token::Token;
 
 /// A Store holds content adressable values
-pub struct Store(kv::Store<Token>);
+pub struct Store(kv::Store);
 
 impl Store {
     /// Create a new configuration builder
