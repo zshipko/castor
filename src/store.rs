@@ -20,12 +20,12 @@ impl Store {
     }
 
     /// Open a readonly transaction
-    pub fn read_txn<'a, V: kv::Value<'a>>(&'a self) -> Result<Txn<'a, V>, kv::Error> {
+    pub fn read_txn<'a>(&'a self) -> Result<Txn<'a>, kv::Error> {
         Ok(Txn(self.0.read_txn()?))
     }
 
     /// Open a writable transaction
-    pub fn write_txn<'a, V: kv::Value<'a>>(&'a mut self) -> Result<Txn<'a, V>, kv::Error> {
+    pub fn write_txn<'a>(&'a mut self) -> Result<Txn<'a>, kv::Error> {
         Ok(Txn(self.0.write_txn()?))
     }
 
