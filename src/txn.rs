@@ -8,9 +8,8 @@ pub struct Txn<'a>(pub kv::Txn<'a>);
 impl <'a> Txn<'a> {
     /// Add a value to the store and return a token
     pub fn put<V: kv::Value<'a>>(&mut self, bucket: &kv::Bucket<'a, Token, V>, val: V) -> Result<Token, kv::Error> {
-        let v = val.into();
-        let token = Token::generate(&v);
-        match self.0.set_no_overwrite(bucket, token.clone(), v) {
+        let token = Token::generate(&val);
+        match self.0.set_no_overwrite(bucket, token.clone(), val) {
             Ok(()) => (),
             Err(ref err) if err.key_exists_error() => (),
             Err(err) => return Err(err)
