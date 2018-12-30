@@ -13,7 +13,14 @@ edition = "2018"
 kv = "0.8"
 digest = "0.8"
 sha2 = {version = "0.8", optional = true}
+sha3 = {version = "0.8", optional = true}
+blake2 = {version = "0.8", optional = true}
 
 [features]
-default=["sha256"]
-sha256=["sha2"]
+default=["blake2s"]
+sha2_256=["sha2"]
+sha2_512=["sha2"]
+sha3_256=["sha3"]
+sha3_512=["sha3"]
+blake2b=["blake2"]
+blake2s=["blake2"]
