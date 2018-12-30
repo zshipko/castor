@@ -20,6 +20,12 @@ impl<T: Hash> Clone for Token<T> {
     }
 }
 
+impl<'a, T: Hash> kv::Value<'a> for Token<T> {
+    fn from_raw(data: &[u8]) -> Token<T> {
+        Token::from(data)
+    }
+}
+
 impl<T: Hash> Token<T> {
     /// Generate a new token for the given value
     pub fn generate<'a, V: Value<'a>>(val: &V) -> Token<T> {
