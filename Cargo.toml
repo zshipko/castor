@@ -1,13 +1,19 @@
 [package]
 name = "castor"
-version = "0.3.1"
+version = "0.4.0"
 authors = ["Zach Shipko <zachshipko@gmail.com>"]
 license = "ISC"
 keywords = ["content-addressable", "storage", "database", "lmdb"]
 documentation = "https://docs.rs/castor"
 repository = "https://github.com/zshipko/castor"
 description = "Content addressable storage backed by LMDB"
+edition = "2018"
 
 [dependencies]
-kv = "0.6"
-sha2 = "0.7"
+kv = "0.8"
+digest = "0.8"
+sha2 = {version = "0.8", optional = true}
+
+[features]
+default=["sha256"]
+sha256=["sha2"]
