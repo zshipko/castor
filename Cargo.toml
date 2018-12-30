@@ -1,6 +1,6 @@
 [package]
 name = "castor"
-version = "0.4.0"
+version = "0.4.1"
 authors = ["Zach Shipko <zachshipko@gmail.com>"]
 license = "ISC"
 keywords = ["content-addressable", "storage", "database", "lmdb"]

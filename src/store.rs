@@ -34,6 +34,18 @@ impl<T: Hash> From<Config<T>> for kv::Config {
     }
 }
 
+impl<T: Hash> AsRef<kv::Store> for Store<T> {
+    fn as_ref(&self) -> &kv::Store {
+        &self.0
+    }
+}
+
+impl<T: Hash> AsMut<kv::Store> for Store<T> {
+    fn as_mut(&mut self) -> &mut kv::Store {
+        &mut self.0
+    }
+}
+
 impl<T: Hash> Store<T> {
     /// Create a new configuration builder
     pub fn config<P: AsRef<Path>>(path: P) -> Config<T> {
