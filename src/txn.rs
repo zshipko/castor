@@ -17,6 +17,18 @@ impl<'a, T: Hash> From<kv::Txn<'a>> for Txn<'a, T> {
     }
 }
 
+impl<'a, T: Hash> AsRef<kv::Txn<'a>> for Txn<'a, T> {
+    fn as_ref(&self) -> &kv::Txn<'a> {
+        &self.0
+    }
+}
+
+impl<'a, T: Hash> AsMut<kv::Txn<'a>> for Txn<'a, T> {
+    fn as_mut(&mut self) -> &mut kv::Txn<'a> {
+        &mut self.0
+    }
+}
+
 impl<'a, T: Hash> Txn<'a, T> {
     /// Add a value to the store and return a token
     pub fn put<V: kv::Value<'a>>(
